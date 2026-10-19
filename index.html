@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortis Labs | Next-Gen Validator Node</title>
+    <title>Fortis Labs | Reliable Node Validation</title>
     <style>
+        /* Desain Bersih, Elegan, dan Terpercaya */
         :root {
-            --bg-color: #05070f;
-            --card-bg: rgba(13, 17, 31, 0.6);
-            --border-color: #161f38;
-            --text-primary: #ffffff;
-            --text-secondary: #8f9cae;
-            --accent-cyan: #00f2fe;
-            --accent-blue: #4facfe;
-            --glow: rgba(0, 242, 254, 0.15);
+            --bg-main: #ffffff;
+            --bg-sub: #f8fafc;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
         }
 
         * {
@@ -22,354 +24,286 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-secondary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            background: radial-gradient(circle at top, rgba(0, 242, 254, 0.08), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
             width: 100%;
-            max-width: 768px;
+            max-width: 640px;
             margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
 
+        /* Header Navigation */
         header {
-            background-color: rgba(5, 7, 15, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: var(--bg-main);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--border-color);
         }
 
-        .header-content {
+        .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
+            height: 72px;
         }
 
-        .logo-area {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            text-decoration: none;
         }
 
-        .logo-box {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 6px;
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+            background-color: var(--text-dark);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-cyan);
-            font-weight: bold;
+            color: white;
+            font-weight: 700;
             font-size: 13px;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
         }
 
-        .logo-text {
-            color: var(--text-primary);
+        .brand-name {
+            color: var(--text-dark);
             font-weight: 700;
-            letter-spacing: 2px;
             font-size: 16px;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            margin-left: 24px;
-            transition: color 0.2s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 80px 0 60px 0;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background-color: rgba(0, 242, 254, 0.05);
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            color: var(--accent-cyan);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 24px;
-        }
-
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-cyan);
-        }
-
-        h1 {
-            color: var(--text-primary);
-            font-size: 36px;
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: -0.5px;
-            margin-bottom: 20px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, var(--accent-cyan), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 36px auto;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-        }
-
-        .networks-section {
-            padding-top: 20px;
-            margin-bottom: 80px;
-        }
-
-        .section-header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 16px;
-            margin-bottom: 24px;
-        }
-
-        .section-header h2 {
-            color: var(--text-primary);
-            font-size: 20px;
-            font-weight: 700;
             letter-spacing: 0.5px;
         }
 
-        .section-header p {
-            font-size: 13px;
-            color: rgba(143, 156, 174, 0.6);
-            margin-top: 4px;
-        }
-
-        .network-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .network-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        .network-card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
-        }
-
-        .card-main {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .network-icon {
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border-color);
-            background-color: #090d16;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--text-primary);
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
             font-size: 14px;
-            flex-shrink: 0;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .card-info h3 {
-            color: var(--text-primary);
-            font-size: 16px;
-            font-weight: 700;
+        nav a:hover {
+            color: var(--primary);
         }
 
-        .card-info p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            line-height: 1.5;
+        /* Hero Section */
+        .hero {
+            padding: 64px 0;
+            text-align: center;
         }
 
-        .card-status-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(22, 31, 56, 0.5);
-            padding-top: 12px;
-        }
-
-        .status-badge {
+        .tagline {
+            display: inline-block;
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 2px 8px;
-            border-radius: 4px;
+            color: var(--primary);
+            background-color: var(--primary-light);
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
         }
 
-        .status-active {
-            color: #4ade80;
-            background-color: rgba(74, 222, 128, 0.05);
-            border: 1px solid rgba(74, 222, 128, 0.1);
+        h1 {
+            color: var(--text-dark);
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
-        .status-testnet {
-            color: var(--accent-cyan);
-            background-color: rgba(0, 242, 254, 0.05);
-            border: 1px solid rgba(0, 242, 254, 0.1);
+        .hero p {
+            font-size: 16px;
+            max-width: 480px;
+            margin: 0 auto 24px auto;
+            color: var(--text-muted);
         }
 
-        .comm-rate {
-            font-size: 11px;
-            color: rgba(143, 156, 174, 0.6);
-            font-weight: 500;
+        .btn {
+            display: inline-block;
+            background-color: var(--text-dark);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background-color 0.2s;
         }
 
-        footer {
-            border-top: 1px solid var(--border-color);
-            background-color: rgba(5, 7, 15, 0.4);
-            padding: 32px 0;
-            font-size: 12px;
-            color: rgba(143, 156, 174, 0.5);
+        .btn:hover {
+            background-color: var(--primary);
         }
 
-        .footer-content {
+        /* Content Section */
+        .section-title {
+            color: var(--text-dark);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .list-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
+            gap: 12px;
+            margin-bottom: 64px;
         }
 
-        .footer-links {
+        /* Card Node */
+        .card {
+            background-color: var(--bg-sub);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
             display: flex;
-            gap: 24px;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .footer-links a {
-            color: rgba(143, 156, 174, 0.5);
-            text-decoration: none;
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        @media (min-width: 640px) {
-            .network-card {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .card-status-row {
-                border-top: none;
-                padding-top: 0;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-                gap: 4px;
-            }
-            .footer-content {
-                flex-direction: row;
-            }
-            h1 {
-                font-size: 44px;
-            }
+        .node-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .node-name {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .node-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .card-right {
+            text-align: right;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--success);
+            background-color: var(--success-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .fee {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            font-size: 12px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigasi Utama -->
     <header>
-        <div class="container header-content">
-            <div class="logo-area">
-                <div class="logo-box">FL</div>
-                <span class="logo-text">FORTIS LABS</span>
-            </div>
+        <div class="container nav-container">
+            <a href="#" class="brand">
+                <div class="brand-icon">F</div>
+                <span class="brand-name">FORTIS LABS</span>
+            </a>
             <nav>
-                <a href="#about">About</a>
-                <a href="#networks">Networks</a>
+                <a href="#nodes">Active Nodes</a>
             </nav>
         </div>
     </header>
 
-    <!-- Konten Utama Halaman -->
     <main class="container">
         
-        <section id="about" class="hero">
-            <div class="badge">
-                <div class="badge-dot"></div> Node Infrastructure
+        <!-- Hero -->
+        <section class="hero">
+            <span class="tagline">Enterprise Infrastructure</span>
+            <h1>Reliable Validation,<br>Quietly Done.</h1>
+            <p>Fortis Labs operates secure, 24/7 non-custodial validator nodes for next-generation blockchain networks.</p>
+            <a href="#nodes" class="btn">View Networks</a>
+        </section>
+
+        <!-- Nodes List -->
+        <section id="nodes">
+            <h2 class="section-title">Supported Networks</h2>
+            
+            <div class="list-container">
+                <!-- Lumera -->
+                <div class="card">
+                    <div class="card-left">
+                        <div class="node-avatar">LU</div>
+                        <div>
+                            <div class="node-name">Lumera Network</div>
+                            <div class="node-desc">Scalable infrastructure for mass Web3 adoption.</div>
+                        </div>
+                    </div>
+                    <div class="card-right">
+                        <span class="status">Active</span>
+                        <span class="fee">Fee: 5%</span>
+                    </div>
+                </div>
+
+                <!-- KiiChain -->
+                <div class="card">
+                    <div class="card-left">
+                        <div class="node-avatar">KI</div>
+                        <div>
+                            <div class="node-name">KiiChain</div>
+                            <div class="node-desc">Next-gen liquidity and RWA integration.</div>
+                        </div>
+                    </div>
+                    <div class="card-right">
+                        <span class="status">Active</span>
+                        <span class="fee">Fee: 5%</span>
+                    </div>
+                </div>
             </div>
-            <h1>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fortis Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
