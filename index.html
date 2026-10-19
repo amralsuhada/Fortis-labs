@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortis Labs | Next-Gen Validator, Cloud Nodes & Staking</title>
+    <title>Fortis Labs | Next-Gen Validator & Staking</title>
     <style>
         /* --- STANDARD CSS (RESET & VARIABLES) --- */
         * {
@@ -115,25 +115,18 @@
             margin: 0 auto 40px auto;
         }
 
-        /* --- VALIDATOR LIST SECTION --- */
+        /* --- VALIDATOR STATS SECTION --- */
         .section-title {
             font-size: 28px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 16px;
         }
 
         .grid-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         .card {
@@ -176,115 +169,6 @@
             font-weight: 600;
         }
 
-        /* --- CLOUD NODE DEPLOYER --- */
-        .deploy-container {
-            background-color: #0d101f;
-            border: 1px solid #232845;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 80px;
-        }
-
-        .deploy-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group select, .form-group input {
-            width: 100%;
-            background-color: var(--bg-color);
-            border: 1px solid #232845;
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .form-group select:focus, .form-group input:focus {
-            border-color: var(--primary);
-        }
-
-        .radio-tile-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        .radio-tile {
-            flex: 1;
-            background-color: var(--bg-color);
-            border: 1px solid #232845;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .radio-tile.active {
-            border-color: var(--secondary);
-            background-color: rgba(6, 182, 212, 0.05);
-        }
-
-        .radio-tile h5 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .radio-tile p {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .summary-box {
-            background-color: var(--card-bg);
-            border: 1px dashed var(--primary);
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #232845;
-        }
-
-        .btn-deploy {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s;
-        }
-
-        .btn-deploy:active {
-            transform: scale(0.98);
-        }
-
         /* --- STAKING DASHBOARD --- */
         .staking-container {
             max-width: 550px;
@@ -303,6 +187,45 @@
         .staking-header p {
             color: var(--text-muted);
             font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            background-color: #0b0d17;
+            border: 1px solid #232845;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--primary);
+        }
+
+        .token-badge {
+            position: absolute;
+            right: 15px;
+            font-weight: bold;
+            color: var(--secondary);
         }
 
         .btn-stake {
@@ -327,9 +250,10 @@
             font-size: 14px;
         }
 
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none; /* Collapses navigation on mobile devices */
             }
             .hero h1 {
                 font-size: 32px;
@@ -344,9 +268,9 @@
         <div class="container navbar">
             <a href="#" class="logo">Fortis Labs</a>
             <ul class="nav-links">
-                <li><a href="#nodes">Supported Networks</a></li>
-                <li><a href="#deploy-node">Launch Node</a></li>
-                <li><a href="#stake">Staking Dashboard</a></li>
+                <li><a href="#nodes">Validator Nodes</a></li>
+                <li><a href="#stake">Staking</a></li>
+                <li><a href="#about">About Us</a></li>
             </ul>
             <button class="btn-connect" onclick="connectWallet()">Connect Wallet</button>
         </div>
@@ -354,16 +278,71 @@
 
     <!-- HERO SECTION -->
     <section class="container hero">
-        <h1>Decentralized Node & Staking Infrastructure</h1>
-        <p>Instantly deploy full blockchain nodes or delegate tokens to our secure validators. Enterprise architecture built for developers and stakers alike.</p>
+        <h1>Enterprise-Grade Non-Custodial Staking</h1>
+        <p>Secure your favorite blockchain networks with Fortis Labs. Earn daily compounding rewards backed by secure, high-uptime infrastructure.</p>
     </section>
 
-    <!-- SUPPORTED NETWORKS SECTION -->
+    <!-- VALIDATOR NODES SECTION -->
     <section class="container" id="nodes">
         <h2 class="section-title">Supported Networks</h2>
-        <p class="section-subtitle">Real-time statistics of global public ledger nodes managed by Fortis Labs</p>
         <div class="grid-stats">
             
+            <!-- Card 1: Cosmos -->
             <div class="card">
                 <span class="node-status">Active</span>
                 <h3>Cosmos Hub (ATOM)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">14.5%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">5%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">99.99%</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Ethereum -->
+            <div class="card">
+                <span class="node-status">Active</span>
+                <h3>Ethereum (ETH)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">4.2%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">2%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">100%</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Sui -->
+            <div class="card">
+                <span class="node-status">Active</span>
+                <h3>Sui Network (SUI)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">6.8%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">4%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">99.95%</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STAKING DASHBOARD SECTION -->
+    <section class="container" id="stake">
