@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortis Labs | Next-Gen Validator & Staking</title>
+    <style>
+        /* --- STANDARD CSS (RESET & VARIABLES) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-color: #0b0d17;
+            --card-bg: #16192b;
+            --primary: #6366f1; /* Indigo/Purple */
+            --secondary: #06b6d4; /* Cyan */
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: block;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: rgba(11, 13, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #232845;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-connect {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-connect:hover {
+            opacity: 0.9;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 0 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- VALIDATOR STATS SECTION --- */
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #232845;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .node-status {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            font-weight: 600;
+        }
+
+        /* --- STAKING DASHBOARD --- */
+        .staking-container {
+            max-width: 550px;
+            margin: 0 auto 100px auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .staking-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .staking-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            background-color: #0b0d17;
+            border: 1px solid #232845;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--primary);
+        }
+
+        .token-badge {
+            position: absolute;
+            right: 15px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .btn-stake {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            border-top: 1px solid #232845;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Collapses navigation on mobile devices */
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">Fortis Labs</a>
+            <ul class="nav-links">
+                <li><a href="#nodes">Validator Nodes</a></li>
+                <li><a href="#stake">Staking</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <button class="btn-connect" onclick="connectWallet()">Connect Wallet</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="container hero">
+        <h1>Enterprise-Grade Non-Custodial Staking</h1>
+        <p>Secure your favorite blockchain networks with Fortis Labs. Earn daily compounding rewards backed by secure, high-uptime infrastructure.</p>
+    </section>
+
+    <!-- VALIDATOR NODES SECTION -->
+    <section class="container" id="nodes">
+        <h2 class="section-title">Supported Networks</h2>
+        <div class="grid-stats">
+            
+            <!-- Card 1: Cosmos -->
+            <div class="card">
+                <span class="node-status">Active</span>
+                <h3>Cosmos Hub (ATOM)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">14.5%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">5%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">99.99%</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Ethereum -->
+            <div class="card">
+                <span class="node-status">Active</span>
+                <h3>Ethereum (ETH)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">4.2%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">2%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">100%</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Sui -->
+            <div class="card">
+                <span class="node-status">Active</span>
+                <h3>Sui Network (SUI)</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Estimated APR</span>
+                    <span class="stat-value" style="color: var(--secondary);">6.8%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Commission</span>
+                    <span class="stat-value">4%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value">99.95%</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STAKING DASHBOARD SECTION -->
+    <section class="container" id="stake">
+        <div class="staking-container">
+            <div class="staking-header">
+                <h2>Staking Dashboard</h2>
+                <p>Connect your Web3 crypto wallet to delegate tokens</p>
+            </div>
+
+            <div class="input-group">
+                <label>Select Network</label>
+                <div class="input-wrapper">
+                    <input type="text" value="Cosmos Hub (ATOM)" readonly style="cursor: not-allowed; color: var(--text-muted);">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Staking Amount</label>
+                <div class="input-wrapper">
+                    <input type="number" placeholder="0.0" min="0" id="stakeAmount">
+                    <span class="token-badge">ATOM</span>
+                </div>
+            </div>
+
+            <button class="btn-stake" onclick="executeStake()">Stake Tokens</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fortis Labs. All rights reserved. Secure & Decentralized Infrastructure.</p>
+        </div>
+    </footer>
+
+    <script>
+        function connectWallet() {
+            alert("Web3 Wallet integration (MetaMask/Keplr) detected simulated environment. Web3 provider SDK is required for native blockchain pairing.");
+        }
+
+        function executeStake() {
+            const amount = document.getElementById('stakeAmount').value;
+            if(!amount || amount <= 0) {
+                alert("Please enter a valid staking amount.");
+            } else {
+                alert("Transaction submitted! Awaiting network confirmation to stake " + amount + " ATOM onto Fortis Labs Node.");
+            }
+        }
+    </script>
+</body>
+</html>
