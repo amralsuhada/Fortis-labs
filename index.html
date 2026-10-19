@@ -87,6 +87,7 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
+            margin-left: 16px;
             transition: color 0.2s;
         }
 
@@ -96,7 +97,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 64px 0;
+            padding: 64px 0 48px 0;
             text-align: center;
         }
 
@@ -145,11 +146,12 @@
             background-color: var(--primary);
         }
 
-        /* Content Section */
+        /* Content Sections */
         .section-title {
             color: var(--text-dark);
             font-size: 18px;
             font-weight: 700;
+            margin-top: 32px;
             margin-bottom: 16px;
             padding-bottom: 8px;
             border-bottom: 1px solid var(--border);
@@ -159,7 +161,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 64px;
+            margin-bottom: 32px;
         }
 
         /* Card Node */
@@ -227,6 +229,40 @@
             margin-top: 4px;
         }
 
+        /* Why Trust Us Section */
+        .trust-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .trust-item {
+            padding: 4px 0;
+        }
+
+        .trust-title {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-title::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .trust-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            padding-left: 20px;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
@@ -245,7 +281,8 @@
                 <span class="brand-name">FORTIS LABS</span>
             </a>
             <nav>
-                <a href="#nodes">Active Nodes</a>
+                <a href="#nodes">Networks</a>
+                <a href="#why-us">Why Trust Us</a>
             </nav>
         </div>
     </header>
@@ -297,13 +334,17 @@
             </div>
         </section>
 
-    </main>
+        <!-- Why Trust Us Section -->
+        <section id="why-us">
+            <h2 class="section-title">Why Trust Fortis Labs</h2>
+            
+            <div class="trust-grid">
+                <!-- Reason 1 -->
+                <div class="trust-item">
+                    <div class="trust-title">Institutional-Grade Security</div>
+                    <div class="trust-desc">We utilize double-signing protection mechanisms and multi-layered sentinel nodes to guard our validation infrastructure against external network attacks.</div>
+                </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Fortis Labs. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+                <!-- Reason 2 -->
+                <div class="trust-item">
+                    <div class="trust-title">High-Performance Hardware</div>
