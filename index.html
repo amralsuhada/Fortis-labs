@@ -21,6 +21,7 @@
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --success: #10b981;
+            --past-node-bg: #111424;
         }
 
         body {
@@ -169,6 +170,49 @@
             font-weight: 600;
         }
 
+        /* --- PAST VALIDATIONS SECTION (ADDED) --- */
+        .past-nodes-container {
+            margin-bottom: 80px;
+            padding: 20px 0;
+        }
+
+        .grid-past-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card-past {
+            background-color: var(--past-node-bg);
+            border: 1px dashed #31375c;
+            border-radius: 12px;
+            padding: 20px;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .card-past:hover {
+            opacity: 1;
+            border-color: var(--primary);
+        }
+
+        .card-past h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
+
+        .badge-archived {
+            display: inline-block;
+            background-color: rgba(148, 163, 184, 0.1);
+            color: var(--text-muted);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
         /* --- STAKING DASHBOARD --- */
         .staking-container {
             max-width: 550px;
@@ -268,9 +312,9 @@
         <div class="container navbar">
             <a href="#" class="logo">Fortis Labs</a>
             <ul class="nav-links">
-                <li><a href="#nodes">Validator Nodes</a></li>
+                <li><a href="#nodes">Active Nodes</a></li>
+                <li><a href="#past-nodes">Past Networks</a></li>
                 <li><a href="#stake">Staking</a></li>
-                <li><a href="#about">About Us</a></li>
             </ul>
             <button class="btn-connect" onclick="connectWallet()">Connect Wallet</button>
         </div>
@@ -282,7 +326,7 @@
         <p>Secure your favorite blockchain networks with Fortis Labs. Earn daily compounding rewards backed by secure, high-uptime infrastructure.</p>
     </section>
 
-    <!-- VALIDATOR NODES SECTION -->
+    <!-- VALIDATOR STATS SECTION -->
     <section class="container" id="nodes">
         <h2 class="section-title">Supported Networks</h2>
         <div class="grid-stats">
@@ -314,35 +358,3 @@
                     <span class="stat-value" style="color: var(--secondary);">4.2%</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Commission</span>
-                    <span class="stat-value">2%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Uptime</span>
-                    <span class="stat-value">100%</span>
-                </div>
-            </div>
-
-            <!-- Card 3: Sui -->
-            <div class="card">
-                <span class="node-status">Active</span>
-                <h3>Sui Network (SUI)</h3>
-                <div class="stat-row">
-                    <span class="stat-label">Estimated APR</span>
-                    <span class="stat-value" style="color: var(--secondary);">6.8%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Commission</span>
-                    <span class="stat-value">4%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Uptime</span>
-                    <span class="stat-value">99.95%</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- STAKING DASHBOARD SECTION -->
-    <section class="container" id="stake">
