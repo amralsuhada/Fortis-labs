@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortis Labs | Next-Gen Validator & Staking</title>
+    <title>Fortis Labs | Next-Gen Validator, Cloud Nodes & Staking</title>
     <style>
         /* --- STANDARD CSS (RESET & VARIABLES) --- */
         * {
@@ -21,7 +21,6 @@
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --success: #10b981;
-            --warning: #f59e0b;
         }
 
         body {
@@ -177,7 +176,7 @@
             font-weight: 600;
         }
 
-        /* --- CLOUD NODE DEPLOYER (NEW) --- */
+        /* --- CLOUD NODE DEPLOYER --- */
         .deploy-container {
             background-color: #0d101f;
             border: 1px solid #232845;
@@ -191,12 +190,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .deploy-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .form-group {
@@ -312,6 +305,19 @@
             font-size: 14px;
         }
 
+        .btn-stake {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -328,6 +334,9 @@
             .hero h1 {
                 font-size: 32px;
             }
+            .deploy-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -340,7 +349,7 @@
             <ul class="nav-links">
                 <li><a href="#nodes">Supported Networks</a></li>
                 <li><a href="#deploy-node">Launch Node</a></li>
-                <li><a href="#stake">Staking</a></li>
+                <li><a href="#stake">Staking Dashboard</a></li>
             </ul>
             <button class="btn-connect" onclick="connectWallet()">Connect Wallet</button>
         </div>
@@ -361,5 +370,3 @@
             <div class="card">
                 <span class="node-status">Active</span>
                 <h3>Cosmos Hub (ATOM)</h3>
-                <div class="stat-row"><span class="stat-label">Estimated APR</span><span class="stat-value" style="color: var(--secondary);">14.5%</span></div>
-                <div class="stat-row"><span class="stat-label">Active Stakers</span><span class="stat-value">1,420</span></div>
