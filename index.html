@@ -23,6 +23,7 @@
             --text-muted: #64748b;
             --success: #10b981;
             --border-color: #1e293b;
+            --bg-track: #090b18;
         }
 
         body {
@@ -247,6 +248,45 @@
             font-weight: 600;
         }
 
+        /* --- ECOSYSTEM TRACK RECORD SECTION --- */
+        .track-section {
+            background-color: var(--bg-track);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .track-card {
+            background-color: rgba(5, 7, 20, 0.5);
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .track-card:hover {
+            border-color: var(--primary);
+            background-color: rgba(79, 70, 229, 0.03);
+        }
+
+        .track-badge {
+            display: inline-block;
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--secondary);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* --- SECURITY ARCHITECTURE --- */
         .grid-security {
             display: grid;
@@ -300,6 +340,8 @@
             }
             .nav-links {
                 gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .hero h1 {
                 font-size: 36px;
@@ -319,9 +361,9 @@
         <div class="container navbar">
             <a href="#" class="logo">Fortis Labs</a>
             <ul class="nav-links">
-                <li><a href="#infrastructure">Infrastructure</a></li>
+                <li><a href="#infrastructure">Active Infrastructure</a></li>
+                <li><a href="#track-record">Ecosystem Track Record</a></li>
                 <li><a href="#security">Security Stack</a></li>
-                <li><a href="#about">Institutional Portal</a></li>
             </ul>
             <button class="btn-portal" onclick="portalAlert()">Staker Portal</button>
         </div>
@@ -329,31 +371,3 @@
 
     <!-- HERO SECTION -->
     <section class="container hero">
-        <span class="badge-enterprise">Enterprise-Grade Architecture</span>
-        <h1>Institutional Infrastructure<br>for Decentralized Networks</h1>
-        <p>Fortis Labs operates high-capacity, non-custodial validator nodes across major decentralized networks. We engineer secure, highly resilient environments to protect and scale digital assets.</p>
-        
-        <!-- BIG SCALE COMPANY METRICS -->
-        <div class="grid-metrics">
-            <div class="metric-item">
-                <div class="metric-title">$1.2B+</div>
-                <div class="metric-label">Total Value Locked (TVL)</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-title">99.99%</div>
-                <div class="metric-label">Historical Uptime</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-title">45+</div>
-                <div class="metric-label">Global Data Hubs</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-title">250K+</div>
-                <div class="metric-label">Active Delegators</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VALIDATOR OPERATIONS SECTION -->
-    <section class="container section" id="infrastructure">
-        <div class="section-header">
